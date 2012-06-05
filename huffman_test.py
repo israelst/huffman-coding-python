@@ -1,6 +1,32 @@
 ﻿import unittest
 from huffman import *
 
+
+class TestDicionario(unittest.TestCase):
+    def test_palavra_com_1_letra(self):
+        arvore = (1, 'a')
+        self.assertEqual(dicionario(arvore), {'a': '0'})
+        arvore = (1, 'b')
+        self.assertEqual(dicionario(arvore), {'b': '0'})
+
+    def test_tabela_com_elementos_diferentes_ab(self):
+        arvore = (2, None, (1, 'a'), (1, 'b'))
+        self.assertEqual(dicionario(arvore), {'a': '0',
+                                              'b': '1'})
+
+    def test_tabela_abacabi(self):
+        arvore = (7, None,
+                (3, 'a'),
+                (4, None,
+                    (2, None,
+                        (1, 'c'),
+                        (1, 'i')),
+                    (2, 'b'))
+                )
+        self.assertEqual(dicionario(arvore), {'a': '0',
+                                              'b': '11',
+                                              'c': '100',
+                                              'i': '101'})
 class TestTabelaFrequencia(unittest.TestCase):
     def test_palavra_vazia(self):
         palavra = ''

@@ -1,5 +1,8 @@
 ﻿import heapq
 
+ESQUERDA = 2
+DIREITA = 3
+
 def frequencia(palavra):
     tabela = {}
 
@@ -21,3 +24,14 @@ def prefixos(tabela):
         pai = merge(esquerda, direita)
         heapq.heappush(floresta, pai)
     return floresta[0]
+
+def dicionario(arvore, simbolo=''):
+    no = arvore[1]
+
+    if no is not None:
+        return {no: simbolo or '0'}
+    else:
+        a = dicionario(arvore[ESQUERDA], simbolo + '0')
+        b = dicionario(arvore[DIREITA], simbolo + '1')
+        a.update(b)
+        return a
