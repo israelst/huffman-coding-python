@@ -43,6 +43,35 @@ class TestCodificar(unittest.TestCase):
         palavra = 'abacabi'
         self.assertEqual(codificar(palavra), '0110100011101')
 
+class TestDecodificar(unittest.TestCase):
+    def test_palavra_com_1_letra(self):
+        arvore = (1, 'a')
+        codigos = '0'
+        self.assertEqual(decodificar(codigos, arvore), 'a')
+
+    def test_palavra_com_2_letras_b(self):
+        arvore = (1, 'b')
+        codigos = '00'
+        self.assertEqual(decodificar(codigos, arvore), 'bb')
+
+    def test_palavra_com_2_letras_diferentes(self):
+        arvore = (7, None,
+                    (3, 'a'),
+                    (4, 'b'))
+        codigos = '01'
+        self.assertEqual(decodificar(codigos, arvore), 'ab')
+
+    def test_palavra_com_letras_diferentes(self):
+        arvore = (7, None,
+                (3, 'a'),
+                (4, None,
+                    (2, None,
+                        (1, 'c'),
+                        (1, 'i')),
+                    (2, 'b'))
+                )
+        codigos = '0110100011101'
+        self.assertEqual(decodificar(codigos, arvore), 'abacabi')
 
 class TestTabelaFrequencia(unittest.TestCase):
     def test_palavra_vazia(self):

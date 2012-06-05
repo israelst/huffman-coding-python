@@ -39,3 +39,18 @@ def dicionario(arvore, simbolo=''):
 def codificar(texto):
     d = dicionario(prefixos(frequencia(texto)))
     return "".join([d[letra] for letra in texto])
+
+def decodificar(codigos, arvore):
+    texto = []
+    no = arvore
+    for codigo in codigos:
+        if no[1] is None:
+            if codigo == '0':
+                no = no[ESQUERDA]
+            elif codigo == '1':
+                no = no[DIREITA]
+        if no[1] is not None:
+            texto.append(no[1])
+            no = arvore
+
+    return "".join(texto)
