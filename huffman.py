@@ -35,3 +35,7 @@ def dicionario(arvore, simbolo=''):
         b = dicionario(arvore[DIREITA], simbolo + '1')
         a.update(b)
         return a
+
+def codificar(texto):
+    d = dicionario(prefixos(frequencia(texto)))
+    return "".join([d[letra] for letra in texto])

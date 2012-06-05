@@ -27,6 +27,23 @@ class TestDicionario(unittest.TestCase):
                                               'b': '11',
                                               'c': '100',
                                               'i': '101'})
+
+class TestCodificar(unittest.TestCase):
+    def test_palavra_com_1_letra(self):
+        palavra = 'a'
+        self.assertEqual(codificar(palavra), '0')
+
+    def test_palavra_com_2_letras_b(self):
+        palavra = 'bb'
+        self.assertEqual(codificar(palavra), '00')
+
+    def test_palavra_com_letras_diferentes(self):
+        palavra = 'ab'
+        self.assertEqual(codificar(palavra), '01')
+        palavra = 'abacabi'
+        self.assertEqual(codificar(palavra), '0110100011101')
+
+
 class TestTabelaFrequencia(unittest.TestCase):
     def test_palavra_vazia(self):
         palavra = ''
