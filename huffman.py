@@ -54,3 +54,8 @@ def decodificar(codigos, arvore):
             no = arvore
 
     return "".join(texto)
+
+def compactar(codigos):
+    bytes = [chr(int(codigos[i:i+8], 2)) for i in range(0,len(codigos),8)]
+    return "".join(bytes)
+

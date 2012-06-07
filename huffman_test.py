@@ -1,6 +1,11 @@
 ﻿import unittest
 from huffman import *
 
+class TestCompactar(unittest.TestCase):
+    def test_compactar_abacabi(self):
+        codigo_abacabi = '0110100011101'
+        self.assertEqual(compactar(codigo_abacabi), 'h\x1d')
+
 
 class TestDicionario(unittest.TestCase):
     def test_palavra_com_1_letra(self):
