@@ -59,3 +59,10 @@ def compactar(codigos):
     bytes = [chr(int(codigos[i:i+8], 2)) for i in range(0,len(codigos),8)]
     return "".join(bytes)
 
+def descompactar(texto_compactado, prefixos):
+    bytes = [bin(ord(byte))[2:] for byte in texto_compactado]
+    for i in range(0, len(bytes) - 1):
+        bytes[i] = bytes[i].zfill(8)
+    texto_codificado = "".join(bytes)
+    texto_descompactado = decodificar(texto_codificado, prefixos)
+    return texto_descompactado
