@@ -1,22 +1,14 @@
 ﻿import unittest
+import fixture
 from huffman import *
 
 class TestDescompactar(unittest.TestCase):
     def test_descompactar_texto_grande(self):
-        import fixture
         compactado = u"""\x04\x94\xfb\xe2\xae\xbd\xf7$e7Mh\xbf\xd2\xfdin\xfd\xab\xe9\xd3G\n\x8fM\x8b,\xde&\x97\xee\xff7\'y~\xdey\xab\xee\xa9LZ\xc7\x87\x8e\xd5\x9e\xb0\xc0iO\xdf[\x922\x9f\xaf\x0b\x1a4\t\t\xe0\x0c\x0b[\xd8\xdfG5\xcb\x1b\xe5\xbe\xc6.\xbf\x04\xe7\xb9\xa7\xb4\x8f\xcd\xeb\xbd,j(\xcbg\x11\x8b\xdap\xc0iC\xdc\xc7\xa7=h\x12\x13\x95o]\xbe5\xa6\xf7\x9eN\xb4\xb7|\'\x8a\x03\x03\x9c\xf7C\xd7\xe2\x8e\x9f\xb9#)\x8bd\xf5\'\x83{s\xd0\xd6-\x96\xc8\xba\xaa+\xf2\xdf\x13[\xfb\xdf\xd6"/}\xc9\x19O\xde\xf8;\xac1Y\x9cF2\xa1\x0cS\xa0\x18\x1e\xba\xde\xaa\xf7M\xd2\xd5\xa6\xd6\x8f\xb4V\xb3\xa8\xf2*+4\xb6RI\xe7\xb5/\xddv\xac[Y\xc5Q\x82s\xa48sc\x1b\x9f\xdfGj\xd7\x91\x13Z\x18\xdf\x1eo\xeda\x80\xd2\x8fp\x00"""
         self.assertEqual(descompactar(compactado, fixture.arvore), fixture.texto)
 
     def test_descompactar_abacabi(self):
-        arvore = (7, None, 
-                (3, 'a'),
-                (4, None, 
-                    (2, None, 
-                        (1, 'c'), 
-                        (1, 'i')),
-                    (2, 'b'))
-                )
-        self.assertEqual(descompactar('h\x1d', arvore), 'abacabi')
+        self.assertEqual(descompactar('h\x1d', fixture.arvore_abacabi), 'abacabi')
 
 
 class TestCompactar(unittest.TestCase):
@@ -38,18 +30,11 @@ class TestDicionario(unittest.TestCase):
                                               'b': '1'})
 
     def test_tabela_abacabi(self):
-        arvore = (7, None,
-                (3, 'a'),
-                (4, None,
-                    (2, None,
-                        (1, 'c'),
-                        (1, 'i')),
-                    (2, 'b'))
-                )
-        self.assertEqual(dicionario(arvore), {'a': '0',
-                                              'b': '11',
-                                              'c': '100',
-                                              'i': '101'})
+        self.assertEqual(dicionario(fixture.arvore_abacabi),
+                {'a': '0',
+                 'b': '11',
+                 'c': '100',
+                 'i': '101'})
 
 class TestCodificar(unittest.TestCase):
     def test_palavra_com_1_letra(self):
@@ -85,16 +70,8 @@ class TestDecodificar(unittest.TestCase):
         self.assertEqual(decodificar(codigos, arvore), 'ab')
 
     def test_palavra_com_letras_diferentes(self):
-        arvore = (7, None,
-                (3, 'a'),
-                (4, None,
-                    (2, None,
-                        (1, 'c'),
-                        (1, 'i')),
-                    (2, 'b'))
-                )
         codigos = '0110100011101'
-        self.assertEqual(decodificar(codigos, arvore), 'abacabi')
+        self.assertEqual(decodificar(codigos, fixture.arvore_abacabi), 'abacabi')
 
 class TestTabelaFrequencia(unittest.TestCase):
     def test_palavra_vazia(self):
@@ -139,14 +116,6 @@ class TestArvoreDePrefixos(unittest.TestCase):
 
     def test_tabela_abacabi(self):
         tabela = {'i': 1, 'a': 3, 'b': 2, 'c':1}
-        arvore = (7, None, 
-                (3, 'a'),
-                (4, None, 
-                    (2, None, 
-                        (1, 'c'), 
-                        (1, 'i')),
-                    (2, 'b'))
-                )
-        self.assertEqual(prefixos(tabela), arvore)
+        self.assertEqual(prefixos(tabela), fixture.arvore_abacabi)
 
 unittest.main()
