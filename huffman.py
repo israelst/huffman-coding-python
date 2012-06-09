@@ -3,27 +3,28 @@
 ESQUERDA = 2
 DIREITA = 3
 
-def frequencia(palavra):
+def frequencia(texto):
     tabela = {}
-
-    for caractere in palavra:
+    for caractere in texto:
         tabela[caractere] = tabela.get(caractere, 0) + 1
     return tabela
 
-def merge(a, b):
+def unir_nos(a, b):
     frequencia = a[0] + b[0]
-    return (frequencia, None, a, b)
+    no_pai = (frequencia, None, a, b)
+    return no_pai
 
-def prefixos(tabela):
-    floresta = [(f, c) for c, f in tabela.items()]
-    heapq.heapify(floresta)
+def prefixos(frequencias):
+    arvore = [(f, c) for c, f in frequencias.items()]
+    heapq.heapify(arvore)
 
-    while len(floresta) > 1:
-        esquerda = heapq.heappop(floresta);
-        direita = heapq.heappop(floresta);
-        pai = merge(esquerda, direita)
-        heapq.heappush(floresta, pai)
-    return floresta[0]
+    while len(arvore) > 1:
+        esquerda = heapq.heappop(arvore);
+        direita = heapq.heappop(arvore);
+        pai = unir_nos(esquerda, direita)
+        heapq.heappush(arvore, pai)
+    raiz = arvore[0]
+    return raiz
 
 def dicionario(arvore, simbolo=''):
     no = arvore[1]
