@@ -15,8 +15,9 @@ def unir_nos(a, b):
     return no_pai
 
 def prefixos(frequencias):
-    arvore = [(f, c) for c, f in frequencias.items()]
-    heapq.heapify(arvore)
+    arvore = []
+    for char, freq in frequencias.items():
+        heapq.heappush(arvore, (freq, char))
 
     while len(arvore) > 1:
         esquerda = heapq.heappop(arvore);
