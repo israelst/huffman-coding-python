@@ -38,18 +38,22 @@ class TestDicionario(unittest.TestCase):
 
 class TestCodificar(unittest.TestCase):
     def test_palavra_com_1_letra(self):
+        dicionario = {'a': '0'}
         palavra = 'a'
-        self.assertEqual(codificar(palavra), '0')
+        self.assertEqual(codificar(palavra, dicionario), '0')
 
     def test_palavra_com_2_letras_b(self):
+        dicionario = {'b': '0'}
         palavra = 'bb'
-        self.assertEqual(codificar(palavra), '00')
+        self.assertEqual(codificar(palavra, dicionario), '00')
 
     def test_palavra_com_letras_diferentes(self):
+        dicionario = {'a': '0', 'b': '1'}
         palavra = 'ab'
-        self.assertEqual(codificar(palavra), '01')
+        self.assertEqual(codificar(palavra, dicionario), '01')
+        dicionario = {'a': '0', 'b': '11', 'c': '100', 'i': '101'}
         palavra = 'abacabi'
-        self.assertEqual(codificar(palavra), '0110100011101')
+        self.assertEqual(codificar(palavra, dicionario), '0110100011101')
 
 class TestDecodificar(unittest.TestCase):
     def test_palavra_com_1_letra(self):

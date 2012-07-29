@@ -38,9 +38,8 @@ def dicionario(arvore, simbolo=''):
         a.update(b)
         return a
 
-def codificar(texto):
-    d = dicionario(prefixos(frequencia(texto)))
-    return "".join([d[letra] for letra in texto])
+def codificar(texto, dicionario):
+    return "".join([dicionario[letra] for letra in texto])
 
 def decodificar(codigos, arvore):
     texto = []
