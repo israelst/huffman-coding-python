@@ -1,0 +1,15 @@
+#!/usr/bin/env python
+if __name__ == '__main__':
+    import huffman as h
+    import argparse
+    from misc import progress
+    parser = argparse.ArgumentParser(description=
+        'Download TJRJ pages to a SQLite database.')
+    parser.add_argument('db', help="sqlite3 database file")
+    parser.add_argument('-f', '--fake', action="store_true", help="work offline, don't download anything real")
+    args = parser.parse_args()
+
+    arvore = h.prefixos(h.frequencia(texto))
+    h.compactar(h.codificar(texto, h.dicionario(arvore)))
+
+
