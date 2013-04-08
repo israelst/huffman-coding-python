@@ -1,8 +1,6 @@
 Codificação Huffman implementada em python
 ==========================================
 
-_R A S C U N H O_
-
 O fim da pré-história foi marcado pelo surgimento da escrita, pelo uso de símbolos para representar ideias.
 
 Determinadas representações de uma informação podem ser mais convenientes que outras para um dado objetivo. O conjunto de símbolos que formam o nosso alfabeto, por exemplo, apesar de ser largamente usado para representar palavras do nosso idioma, precisam ser codificados de uma outra maneira para ser transmitido ou armazenado através de computadores.
