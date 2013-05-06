@@ -1,0 +1,33 @@
+Escrevendo um compactador em Python
+
+Você sabe como funciona um compactador de arquivos? Sabe qual é o algoritmo presente em encoders mp3, jpeg, gzip, etc? 
+
+Gostaria de escrever seu compactador usando Python e TDD (Test Driven Development)? 
+
+Nesta atividade vamos desmistificar o tema apresentando uma implementação simples da codificação de Huffman, um importante algoritmo tão presente no nosso dia-a-dia.
+
+O objetivo dessa atividade é desmistificar compactação de dados através da apresentação de uma implementação o
+
+
+Determinadas representações de uma informação podem ser mais convenientes que outras para um dado objetivo. O conjunto de símbolos que formam o nosso alfabeto, por exemplo, apesar de ser largamente usado para representar palavras do nosso idioma, precisam ser representado de uma outra maneira para ser transmitido ou armazenado através de computadores.
+
+Se desejarmos armazenar a palavra "BANANA" em nosso computador, é necessário representá-la através da linguagem da máquina, números binários. Existem várias formas de se fazer isso, uma delas é através de uma variação da codificação ASCII, que atribui um número de 0 a 255 para cada letra:
+
+Letra  Decimal  Binário 
+  B      66     01000001 
+    A      65     01000010 
+      N      78     01001110
+
+      Assim, "BANANA" poderia ser escrito como "010000100100000101001110010000010100111001000001", o que ocuparia 48 bits de espaço de armazenamento. Essa codificação é capaz de lidar com um alfabeto de 256 símbolos, abrangendo letras, acentos, sinais de pontuação, etc.. Mas o nosso alfabeto só possui 3, "B", "A" e "N". Então ao invés de usar 8 bit para representar cada símbolo, podemos usar somente 2:
+
+      Letra Decimal Binário
+        B      0      00
+          A      1      01 
+            N      2      10
+
+            Assim, "BANANA" poderia ser escrito como "000110011001", o que ocuparia 12 bits de espaço de armazenamento. Já foi uma grande melhora, mas ainda podemos fazer melhor.
+
+            Nesta atividade vamos desmistificar o tema compactação de dados apresentando uma implementação simples escrita em Python da codificação de Huffman, um importante algoritmo presente em encoders mp3, jpeg, gzip, etc.
+
+            A proposta é abordar temas como representação da informação, distribuição de frequência, heap e árvore de prefixos, além de mostrar como você pode escrever seu próprio compactador usando desenvolvimento orientado a testes.
+            u
