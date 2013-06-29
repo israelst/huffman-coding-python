@@ -28,7 +28,7 @@ Se desejarmos armazenar a palavra `BANANA` em nosso computador, é necessário r
         </tr>
         <tr>
             <td>N</td>
-            <td>65</td>
+            <td>78</td>
             <td>01001110</td>
         </tr>
     </tbody>
