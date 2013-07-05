@@ -1,13 +1,11 @@
-﻿import heapq
+﻿from collections import Counter
+import heapq
 
 ESQUERDA = 2
 DIREITA = 3
 
 def frequencia(texto):
-    tabela = {}
-    for caractere in texto:
-        tabela[caractere] = tabela.get(caractere, 0) + 1
-    return tabela
+    return Counter(texto)
 
 def unir_nos(a, b):
     frequencia = a[0] + b[0]
